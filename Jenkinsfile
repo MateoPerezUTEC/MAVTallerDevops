@@ -14,14 +14,14 @@ pipeline {
       }
     }
 
-    stage('Build de aplicación') {
+    stage('Build de aplicaciÃ³n') {
       steps {
         echo 'Generando Build'
         timestamps() {
           echo 'Fecha de inicio de build'
         }
 
-        sh 'sh construcción.sh'
+        sh 'sh construccion.sh'
       }
     }
 
