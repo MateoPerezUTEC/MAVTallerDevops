@@ -14,5 +14,16 @@ pipeline {
       }
     }
 
+    stage('Build de aplicación') {
+      steps {
+        echo 'Generando Build'
+        timestamps() {
+          echo 'Fecha de inicio de build'
+        }
+
+        sh 'sh construcción.sh'
+      }
+    }
+
   }
 }
