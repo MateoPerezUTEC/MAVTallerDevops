@@ -37,5 +37,37 @@ pipeline {
       }
     }
 
+    stage('Testing') {
+      parallel {
+        stage('Testing') {
+          steps {
+            echo 'Instalando en servidor de pruebas'
+            sh 'sh instalar_testing.sh'
+            input 'Las pruebas fueron satisfactorias?'
+            mail(subject: 'Software aprobado en testing', body: 'Software aprobado en testing', from: 'mperezdevops@gmail.com', replyTo: 'mperezdevops@gmail.com', to: 'mperezdevops@gmail.com')
+          }
+        }
+
+        stage('Chrome') {
+          steps {
+            echo 'Pruebas en google chrome'
+          }
+        }
+
+        stage('Edge') {
+          steps {
+            echo 'Pruebas en Edge'
+          }
+        }
+
+        stage('Firefox') {
+          steps {
+            echo 'Pruebas en firefox'
+          }
+        }
+
+      }
+    }
+
   }
 }
