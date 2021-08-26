@@ -69,7 +69,7 @@ pipeline {
       }
     }
 
-    stage('Instalación preproduccion') {
+    stage('Instalacion preproduccion') {
       steps {
         echo 'Instalando en ambiente de preproduccion'
         sh 'sh instalar_prep.sh'
@@ -78,6 +78,15 @@ pipeline {
         }
 
         mail(subject: 'Instalacion en preproduccion finalizada', body: 'Instalacion en preproduccion finalizada', from: 'mperezdevops@gmail.com', replyTo: 'mperezdevops@gmail.com', to: 'mperezdevops@gmail.com')
+      }
+    }
+
+    stage('Aprobacion cliente') {
+      steps {
+        echo 'Sistema listo para ser aprobado por el cliente'
+        mail(subject: 'Hay una nueva version para aprobar', body: 'Hay una nueva version para aprobar', from: 'mperezdevops@gmail.com', replyTo: 'mperezdevops@gmail.com', to: 'mperezdevops@gmail.com')
+        input 'Aprobar software?'
+        mail(subject: 'Software Aprobado', body: 'Software Aprobado', from: 'mperezdevops@gmail.com', replyTo: 'mperezdevops@gmail.com', to: 'mperezdevops@gmail.com')
       }
     }
 
