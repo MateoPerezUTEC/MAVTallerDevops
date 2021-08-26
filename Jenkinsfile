@@ -69,5 +69,17 @@ pipeline {
       }
     }
 
+    stage('Instalación preproduccion') {
+      steps {
+        echo 'Instalando en ambiente de preproduccion'
+        sh 'sh instalar_prep.sh'
+        timestamps() {
+          echo 'Instalado en preproduccion'
+        }
+
+        mail(subject: 'Instalacion en preproduccion finalizada', body: 'Instalacion en preproduccion finalizada', from: 'mperezdevops@gmail.com', replyTo: 'mperezdevops@gmail.com', to: 'mperezdevops@gmail.com')
+      }
+    }
+
   }
 }
