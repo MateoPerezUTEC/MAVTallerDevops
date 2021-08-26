@@ -90,5 +90,17 @@ pipeline {
       }
     }
 
+    stage('Publicacion en produccion') {
+      steps {
+        echo 'Instalando en produccion'
+        sh 'sh instalar_prod.sh'
+        mail(subject: 'El software quedo desplegado en produccion', body: 'El software quedo desplegado en produccion', from: 'mperezdevops@gmail.com', replyTo: 'mperezdevops@gmail.com', to: 'mperezdevops@gmail.com')
+        timestamps() {
+          echo 'Fecha de publicacion'
+        }
+
+      }
+    }
+
   }
 }
