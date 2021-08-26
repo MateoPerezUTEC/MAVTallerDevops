@@ -10,6 +10,7 @@ pipeline {
         }
 
         input 'Aprobar el pull request?'
+        git 'https://github.com/MateoPerezUTEC/MAVTallerDevops.git'
       }
     }
 
