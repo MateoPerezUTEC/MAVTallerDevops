@@ -14,7 +14,7 @@ pipeline {
       }
     }
 
-    stage('Build de aplicación') {
+    stage('Build de aplicacion') {
       steps {
         echo 'Generando Build'
         timestamps() {
@@ -22,6 +22,18 @@ pipeline {
         }
 
         sh 'sh construccion.sh'
+      }
+    }
+
+    stage('Pruebas unitarias') {
+      steps {
+        echo 'Ejecutando pruebas unitarias'
+        timestamps() {
+          echo 'Comienzo de la ejecucion'
+        }
+
+        sh 'sh testing_autom.sh'
+        mail(subject: 'Pruebas unitarias finalizadas', body: 'Pruebas unitarias finalizadas', from: 'mperezdevops@gmail.com', replyTo: 'mperezdevops@gmail.com', to: 'mperezdevops@gmail.com')
       }
     }
 
